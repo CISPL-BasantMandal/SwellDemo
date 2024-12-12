@@ -33,14 +33,20 @@ function Page() {
             )}
             {!loading && (
                 <>
-                    <h1 className="text-3xl font-medium p-5 mb-2">Product Details - {productDetails.name}</h1>
-                    <ul className="mt-7 flex flex-col gap-8">
-                        <li>
-                            <span className="font-medium text-red-600">SKU : </span>
-                            {productDetails.sku}
-                        </li>
-                        <li>
-                            <span className="font-medium text-red-600">Image : </span>
+                    <h1 className="text-3xl font-medium p-5  border-b-2 mb-7">
+                        Product Details - {productDetails.name}
+                    </h1>
+                    <div class="grid grid-col-1 sm:grid-cols-2 gap-6">
+                        <div>
+                            <span className="font-medium text-red-600">Name:</span>
+                            <span class="">{productDetails.name}</span>
+                        </div>
+                        <div>
+                            <span className="font-medium text-red-600">SKU:</span>
+                            <span class="">{productDetails.sku}</span>
+                        </div>
+                        <div>
+                            <span className="font-medium text-red-600">Image: </span>
                             <Image
                                 src={productDetails.images[0].file.url}
                                 alt={productDetails.name}
@@ -48,19 +54,25 @@ function Page() {
                                 height={30}
                                 className="max-w-sm rounded-lg shadow-2xl h-52 m-3"
                             />
-                        </li>
-                        <li>
-                            <span className="font-medium text-red-600">Description : </span>
-                            {productDetails.description}
-                        </li>
-                        <li>
+                        </div>
+                        <div>
+                            <span className="font-medium text-red-600">Description: </span>
+                            <span class="">{productDetails.description}</span>
+                        </div>
+                        <div>
                             <span className="font-medium text-red-600">Price : </span>
-                            {new Intl.NumberFormat('en-IN', {
-                                style: 'currency',
-                                currency: productDetails.purchase_options.standard.currency,
-                            }).format(productDetails.price)}
-                        </li>
-                    </ul>
+                            <span class="">
+                                {' '}
+                                {new Intl.NumberFormat('en-IN', {
+                                    style: 'currency',
+                                    currency: productDetails.purchase_options.standard.currency,
+                                }).format(productDetails.price)}
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <button className="btn btn-error">ADD CART</button>
+                    </div>
                 </>
             )}
         </div>
