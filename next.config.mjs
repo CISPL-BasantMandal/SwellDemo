@@ -1,8 +1,17 @@
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
+    // images: {
+    //     domains: ['cdn.swell.store'],
+    // },
     images: {
-        domains: ['cdn.swell.store'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'cdn.swell.store',
+                pathname: '**',
+            },
+        ],
     },
     eslint: {
         // Warning: This allows production builds to successfully complete even if
