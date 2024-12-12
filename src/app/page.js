@@ -5,6 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+let USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
+
 export default function Home() {
     const [products, setProducts] = useState();
     const [loading, setLoading] = useState(true);
@@ -22,7 +27,7 @@ export default function Home() {
     return (
         <>
             <div>
-                <h1 className="text-2xl font-medium p-5">Products from Swell</h1>
+                <h1 className="text-3xl font-medium p-5 mb-2">Products from Swell</h1>
             </div>
 
             <ul className="flex flex-wrap  gap-8">
@@ -50,6 +55,16 @@ export default function Home() {
                                 <div className="card-body">
                                     <h2 className="card-title">{product.name}</h2>
                                     <p className="line-clamp-3">{product.description}</p>
+
+                                    <p className=" mt-2 text-center">
+                                        Price -
+                                        <span className="ml-1 text-red-500 font-medium">
+                                            {new Intl.NumberFormat('en-IN', {
+                                                style: 'currency',
+                                                currency: product.purchase_options.standard.currency,
+                                            }).format(product.price)}
+                                        </span>
+                                    </p>
                                     <div className="card-actions justify-center mt-3">
                                         <div className="btn btn-primary">Buy Now</div>
                                     </div>
