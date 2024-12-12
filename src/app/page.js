@@ -5,14 +5,8 @@ import { nanoid } from 'nanoid';
 import Image from 'next/image';
 import Link from 'next/link';
 
-async function getProducts() {
-    let data = await fetch('/api/product');
-    let products = await data.json();
-    return products.data.results;
-}
-
 export default async function Home() {
-    let data = await fetch('http://localhost:3000/api/product');
+    let data = await fetch(process.env.DOMAIN + '/api/product');
     let result = await data.json();
     const products = result.data.results;
 
