@@ -33,9 +33,12 @@ export default function Home() {
             <ul className="flex flex-wrap  gap-8">
                 {loading && (
                     <>
-                        <div className="flex flex-col justify-center items-center h-screen  mx-auto">
-                            <p>Loading Products...</p>
-                            <span className="loading loading-bars loading-lg"></span>
+                        <p className="w-full text-center">Loading Products...</p>
+                        <div className="flex flex-wrap h-screen  mx-auto  gap-8">
+                            {/* <span className="loading loading-bars loading-lg"></span> */}
+                            <div className="skeleton w-96 h-72 shadow-xl"></div>
+                            <div className="skeleton  w-96 h-72  shadow-xl"></div>
+                            <div className="skeleton w-96 h-72  shadow-xl"></div>
                         </div>
                     </>
                 )}
@@ -65,8 +68,8 @@ export default function Home() {
                                             }).format(product.price)}
                                         </span>
                                     </p>
-                                    <div className="card-actions justify-center mt-3">
-                                        <div className="btn btn-primary">Buy Now</div>
+                                    <div className="card-actions justify-center mt-4">
+                                        <div className="btn btn-primary">View Details</div>
                                     </div>
                                 </div>
                             </Link>
