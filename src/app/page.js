@@ -49,7 +49,7 @@ export default function Home() {
                                 <figure>
                                     <Image
                                         src={product.images[0].file.url}
-                                        alt="Next.js logo"
+                                        alt={product.name}
                                         width={180}
                                         height={30}
                                         className="max-w-sm rounded-lg shadow-2xl h-52 m-3"
