@@ -16,7 +16,7 @@ export default function Home() {
 
     useEffect(() => {
         async function fetchProducts() {
-            let data = await fetch('/api/product');
+            let data = await fetch('/api/product/listing');
             let result = await data.json();
             setLoading(false);
             setProducts(result.data.results);
@@ -42,7 +42,7 @@ export default function Home() {
                 {products &&
                     products.map((product) => (
                         <li key={nanoid()} className="card bg-base-100 w-96 shadow-xl hover:scale-105">
-                            <Link href={'/product/' + product.sku}>
+                            <Link href={'/product/' + product.slug}>
                                 <figure>
                                     <Image
                                         src={product.images[0].file.url}
