@@ -23,7 +23,9 @@ export default function RootLayout({ children }) {
         <html lang="en">
             <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
                 <Header />
-                <div className="min-h-[90vh]">{children}</div>
+                <div className="hero bg-base-200 min-h-screen">
+                    <div className="hero-content flex-col">{children}</div>
+                </div>
                 <Footer />
             </body>
         </html>
