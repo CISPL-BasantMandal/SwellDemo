@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 function Page() {
     const [productDetails, setProductDetails] = useState();
@@ -23,6 +24,10 @@ function Page() {
         console.log();
     }, []);
 
+    const notify = () => {
+        toast.success('Successfully Added to Cart! - In Progress');
+    };
+
     return (
         <div className="flex flex-col justify-center items-center gap-6">
             {loading && (
@@ -36,14 +41,14 @@ function Page() {
                     <h1 className="text-3xl font-medium p-5  border-b-2 mb-7">
                         Product Details - {productDetails.name}
                     </h1>
-                    <div class="grid grid-col-1 sm:grid-cols-2 gap-6">
+                    <div className="grid grid-col-1 sm:grid-cols-2 gap-6">
                         <div>
                             <span className="font-medium text-red-600">Name:</span>
-                            <span class="">{productDetails.name}</span>
+                            <span className="">{productDetails.name}</span>
                         </div>
                         <div>
                             <span className="font-medium text-red-600">SKU:</span>
-                            <span class="">{productDetails.sku}</span>
+                            <span className="">{productDetails.sku}</span>
                         </div>
                         <div>
                             <span className="font-medium text-red-600">Image: </span>
@@ -57,11 +62,11 @@ function Page() {
                         </div>
                         <div>
                             <span className="font-medium text-red-600">Description: </span>
-                            <span class="">{productDetails.description}</span>
+                            <span className="">{productDetails.description}</span>
                         </div>
                         <div>
                             <span className="font-medium text-red-600">Price : </span>
-                            <span class="">
+                            <span className="">
                                 {' '}
                                 {new Intl.NumberFormat('en-IN', {
                                     style: 'currency',
@@ -71,7 +76,9 @@ function Page() {
                         </div>
                     </div>
                     <div>
-                        <button className="btn btn-error">ADD CART</button>
+                        <button className="btn btn-error" onClick={notify}>
+                            ADD CART
+                        </button>
                     </div>
                 </>
             )}

@@ -1,8 +1,21 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 import Search from './Search';
 
 function Navigation() {
+    const [cartData, setCartData] = useState();
+    useEffect(() => {
+        async function getCartCount() {
+            let data = await fetch('/api/cart');
+            let result = await data.json();
+            if (result.data) {
+                setCartData(result);
+            }
+        }
+    }, []);
     return (
         <div className="mt-3 flex flex-wrap items-center justify-center gap-6 px-3 py-2 text-sm sm:justify-between">
             <div>
@@ -39,7 +52,9 @@ function Navigation() {
                                             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                                         />
                                     </svg>
-                                    <span className="badge badge-sm indicator-item">0</span>
+                                    <span className="badge badge-sm indicator-item">
+                                        {cartData?.length || 0}
+                                    </span>
                                 </div>
                             </div>
                         </Link>

@@ -1,4 +1,5 @@
 import { Geist, Geist_Mono } from 'next/font/google';
+import { Toaster } from 'react-hot-toast';
 import Footer from './component/Footer';
 import Header from './component/Header';
 import './globals.css';
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
                 <Header />
                 <div className="hero bg-base-200 min-h-screen">
                     <div className="hero-content flex-col">{children}</div>
+                    <Toaster />
                 </div>
                 <Footer />
             </body>
